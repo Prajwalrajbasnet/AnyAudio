@@ -1,0 +1,495 @@
+body{
+  font-family: 'Open Sans', sans-serif;
+  background: #dedede;
+
+}
+nav{
+  background-color: #4a4e69;
+}
+
+.big-record-button{
+  width: 170px;
+  height: 170px;
+  border-radius: 32%;
+  background: #A63446;
+  box-shadow: 4px 3px 6px black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.options-btn{
+  padding: 10px 25px;
+  border: 3px solid #fa1616;
+  border-radius: 5px;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s ease-in-out;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+#join-music-btn{
+  padding: 10px 45px;
+}
+
+.btn-karaoke{
+  padding: 10px 35px;
+}
+
+.options-btn:hover{
+  color: white;
+  background: #fa1616;
+}
+.audio-container{
+  width: 100%;
+  min-height: 250px;
+  background: #0c6291;
+  border-radius: 6px;
+  position: relative;
+  padding-bottom: 45px;
+  padding-top: 15px;
+}
+
+.recording-controls{
+  font-size: 20px;
+  
+}
+
+#pause, #end, #cancel, #mic, #proceed{
+  border-radius: 50%;
+  padding: 9px 15px;
+  background: #dedede;
+  box-shadow:  4px 4px 8px #bdbdbd, 
+             -4px -4px 8px #ffffff;
+}
+
+#mic{
+  display: none;
+}
+
+#proceed{
+  display: none;
+  cursor: pointer;
+}
+
+.mic, .proceed{
+  left: calc((100% - 41px)/2);
+  position: relative;
+  margin-top: 40px;
+}
+
+#pause{
+  color: #438a5e;
+}
+
+#end{
+  color: #e7305b;
+}
+
+#cancel{
+  color: #595238;
+}
+
+.recording-controls a, #mic{
+  cursor: pointer;
+}
+
+.pause{
+  transition: 0.3s ease-in-out;
+}
+
+.pause-blink{
+  opacity: 0.2;
+}
+
+.time-counter{
+  text-align: center;
+  color: yellow;
+}
+
+#timer{
+  display: inline-block;
+  margin-top: 15px;
+}
+
+#playback-controls{
+  display: none;
+  padding: 20px 0 5px;
+  border-top: 0.2px dotted black;
+}
+
+#preview-play, #preview-mixed, #preview-joined, .download, #save-mixed{
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 9px 17px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+  color: antiquewhite;
+  margin-left: 10px;
+}
+#preview-mixed i{
+  opacity: 0.6;
+  transition: 0.3s ease;
+}
+#preview-mixed[data-active = "true"]{
+  background: rgba(0, 0, 0, 0.6);
+}
+
+#preview-mixed[data-active = "true"] i{
+  opacity: 1;
+  color: aqua;
+}
+
+#preview-joined{
+  display: none;
+}
+.download{
+  height: 38.8px;
+}
+.audioInput{
+  position: absolute;
+  bottom: -40px;
+  left: calc((100% - 93px)/2);
+  margin: 0 auto;
+  display: none;
+}
+
+[type="file"] {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
+
+.inputBtn{
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Poppins', sans-serif;
+  font-size: inherit;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  outline: none;
+  padding: 1rem 20px;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  vertical-align: middle;
+}
+/* [type="file"] + label:hover {
+  background-color: #d3460d;
+} */
+.inputBtn{
+  background-color: #ee6d9e;
+  border-radius: 0;
+  overflow: hidden;
+}
+.inputBtn span {
+  display: inline-block;
+  height: 100%;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 100%;
+}
+.inputBtn::before {
+  color: #fff;
+  content: "\f382";
+  font-family: "Font Awesome 5 Free";
+  font-size: 130%;
+  height: 100%;
+  left: 34%;
+  line-height: 2.6;
+  position: absolute;
+  top: -180%;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 100%;
+}
+.inputBtn:hover {
+  background-color: #ae144f;
+}
+.inputBtn:hover span {
+  -webkit-transform: translateY(300%);
+          transform: translateY(300%);
+}
+.inputBtn:hover::before {
+  top: 0;
+}
+
+.track{
+  width: 90%;
+  margin: 50px auto;
+  background: rgba(0, 0, 0, 0.4);
+  position: relative;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+.track::before{
+  content: attr(data-title);
+  position: absolute;
+  top: -20px;
+  color: white;
+  font-size: 12px;
+  opacity: 0.5;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.track.active{
+  /* border: 2px solid skyblue; */
+  background: none;
+  cursor: initial;
+}
+canvas{
+  width: 100%;
+}
+.track canvas{
+  height: 90px;
+  padding: 5px 10px;
+  transition: 0.2s ease-in-out;
+}
+.track.active canvas{
+  height: 150px;
+}
+.realtime-wave-container{
+  width: 90%;
+  margin: auto;
+  display: none;
+}
+#realtime{
+  width: 100%;
+  height: 150px;
+  transition: 0.3s ease-in-out;
+}
+.handles{
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0%;
+  width: 100%;
+}
+.inactive{
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+.inactive-left{
+  left: 0;
+}
+.inactive-right{
+  right: 0;
+}
+.track.active .handles{
+  background: rgba(255, 255, 255, 0.1);
+  cursor: crosshair;
+}
+.track.active .left-handle, .track.active .right-handle{
+  width: 10px;
+  height: 100%;
+  background-color: lightblue;
+  cursor: col-resize;
+}
+.left-handle{
+  left: 0;
+}
+.right-handle{
+  position: absolute;
+  top: 0;
+  left: calc(100% - 10px);
+}
+.track.active .left-handle::after{
+  content: attr(data-timestamp);
+  position: absolute;
+  bottom: -15px;
+  font-size: 12px;
+  color: greenyellow;
+}
+.track.active .right-handle::after{
+  content: attr(data-timestamp);
+  position: absolute;
+  bottom: -15px;
+  right: 0;
+  font-size: 12px;
+  color: greenyellow;
+}
+.track.active .handles .progress{
+  width: calc(100% - 20px);
+  margin: 0 10px;
+  /* position: relative; */
+  /* top: -100%; */
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
+.track.active .handles #progress-bar{
+  width: 3px;
+  height: 100%;
+  position: absolute;
+  left: 0%;
+  top: 0;
+  background-color: brown;
+}
+.track.active .handles #progress-bar::before{
+  content: attr(data-timestamp);
+  position: absolute;
+  top: -20px;
+  left: -18px;
+  font-size: 11px;
+  color: white;
+}
+
+.trim-input{
+  margin-left: 35px;
+}
+
+input[type = "number"]{
+  padding: 0;
+  width: 15px;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.separator{
+  color: white;
+}
+.trim-input label{
+  color: white;
+  opacity: 0.7;
+  display: inline;
+  font-size: 13px;
+}
+.start-time, .end-time{
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 8px;
+  border-radius: 3px;
+}
+.start-time{
+  margin-right: 10px;
+}
+
+.filters, .effects{
+  margin-left: 35px;
+  margin-top: 15px;
+}
+.filter, .effect{
+  color: white;
+  font-size: 13px;
+}
+#lowpass, #reverb, #fade-in, #fade-out{
+  margin-left: 10px;
+}
+
+.countdown-overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  text-align: center;
+  display: none;
+  transition: 0.4s ease-in-out;
+}
+.count{
+  margin-top: 15%;
+}
+
+#count-number{
+  font-family: 'Bree Serif', serif;
+  font-size: 14rem;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 1325px){
+  /* .filters, .effects{
+    float: none;
+  } */
+  .audio-container{
+    padding-bottom: 150px;
+  }
+  .trim-input{
+    float: right;
+  }
+  .row-1{
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .filters{
+    margin-left: 0;
+  }
+  .effects{
+    margin-left: 5px;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .row-2{
+    float: left;
+    max-width: 99%;
+    margin: 0 auto 20px;
+  }
+  .row-3{
+    float: left;
+    max-width: 99%;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 515px){
+  /* #playback-controls{
+    bottom: -3px;
+  } */
+  .audio-container{
+    padding-bottom: 170px;
+  }
+  .trim-input{
+    float: left;
+    margin-left: 5px;
+  }
+  .start-time, .end-time, .trim-input label, #preview-play, #preview-mixed, #preview-joined, .download, #save-mixed{
+    font-size: 10px;
+  }
+  input[type=number] {
+   font-size: 10px;
+  }
+  .download{
+    height: 30px;
+  }
+}
+@media screen and (max-width: 414px){
+  .start-time, .end-time, .trim-input label, #preview-play, #preview-mixed, #preview-joined, .download, #save-mixed{
+    font-size: 7px;
+  }
+  input[type=number] {
+   font-size: 7px;
+  }
+  .download{
+    height: 26px;
+  }
+}

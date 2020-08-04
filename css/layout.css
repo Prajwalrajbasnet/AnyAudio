@@ -1,0 +1,101 @@
+.left{
+  float: left;
+}
+.right{
+  float: right;
+}
+.clearfix:after{
+  clear: both;
+  display: table;
+  content: '';
+}
+nav{
+  width: 100%;
+  padding: 10px 0;
+}
+.logo-container{
+  width: 10%;
+  margin: auto;
+}
+.logo-container a img{
+  width: 100%;
+}
+
+.big-record-button img{
+  width: 50%;
+}
+
+main{
+  margin-top: 40px;
+}
+
+.app-features{
+  max-width: 580px;
+  margin: 15% auto;
+  /* display: none; */
+}
+.record-btn{
+  max-width: 170px;
+  margin: auto;
+}
+.sing-karaoke{
+  margin-right: 15px;
+}
+
+.other-options{
+  max-width: 380px;
+  margin: 50px auto 0;
+}
+@media screen and (min-width){
+  .other-options.left{
+    margin-left: 6px;
+  }
+}
+@media screen and (max-width : 786px){
+  nav{
+    padding:28px 0;
+  }
+  .logo-container{
+    width: 25%;
+  }
+  .other-options{
+    max-width: 200px;
+  }
+  .other-options.left{
+    float: none;
+  }
+  .record-btn{
+    float: none;
+  }
+  .other-options.right{
+    float: none;
+    
+  }
+  .other-options.bottom{
+    margin-top: 15px;
+  }
+}
+.recorder{
+  width: 88%;
+  margin: auto;
+  display: none;
+}
+.recording-controls{
+  width: 184px;
+  margin: 14px auto;
+}
+.recording-controls div{
+  margin-right: 15px;
+}
+
+#playback-controls{
+  position: absolute;
+  bottom: 15px;
+  left: 3%;
+  right: 3%;
+  width: 93%;
+}
+
+#volume-slider{
+  margin-top: 12%;
+}

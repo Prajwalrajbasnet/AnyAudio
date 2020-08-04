@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnyAudio</title>
+  <link href="css/reset.css" rel="stylesheet" type="text/css">
+  <link href="css/layout.css" rel="stylesheet" type="text/css">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Bree+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA==" crossorigin="anonymous" />
+</head>
+<body>
+<div class="app-container-wrapper">
+  <nav class="navigation">
+    <div class="logo-container">
+      <a href="" title="home">
+        <img src="images/logo.png" alt="logo image">
+      </a>
+    </div>
+  </nav>
+  <main>
+    <div class="app-features" id="app-features">
+      <div class="other-options left clearfix">
+        <div class="sing-karaoke">
+          <button class="options-btn btn-karaoke" id="karaoke-btn">Sing Karaoke?</button>
+        </div>
+        <div class="create-ringtone">
+          <button class="options-btn" id="ringtone-btn">Create Ringtone?</button>
+        </div>
+      </div>
+      <div class="record-btn left">
+        <button class="big-record-button" id="record" title="record">
+          <img src="images/microphone.png">
+        </button>
+      </div>
+      <div class="other-options bottom left">
+        <div class="join-music">
+          <button class="options-btn" id="join-music-btn">Join Music?</button>
+        </div>
+        <div class="single-recording">
+          <button class="options-btn" id="single-recording">Single Recording?</button>
+        </div>
+      </div>
+    </div>
+    <div class="recorder">
+      <div class="audio-container">
+          <div class="time-counter">
+            <span id="timer">00:00</span>
+          </div>
+          <audio id="recorded"></audio>
+          <audio id="background"></audio>
+
+          <div id="playback-controls">
+            <div class="row-1">
+
+              <div class="play left">
+                <button title="play selected track" data-playing="false" id="preview-play"><i id="play-status" class="fas fa-play"></i></button>
+              </div>
+              <div class="mixed left">
+                <button title="preview mixed track" id="preview-mixed" data-active="false"><i class="fas fa-eye"></i></button>
+              </div>
+              <div class="joined left">
+                <button title="preview joined track" id="preview-joined"><i class="fas fa-eye"></i></button>
+              </div>
+              <div class="trim-input left">
+                <label for="start-time">Start:</label>
+                <div class="start-time" id="start-time">
+                  <input type="number" name="minute" class="minute" id="minute-start" min="00" max="60" value="00" pattern="[0-9]{2}">
+                  <span class="separator">:</span>
+                  <input type="number" name="second" class="second" id="second-start" min="00" max="60" value="00">
+                  <span class="separator">:</span>
+                  <input type="number" name="centiSecond" class="centiSecond" id="centisecond-start" min="00" max="100" value="00">
+                </div>
+                <label for="start-time">End:</label>
+                <div class="end-time" id="end-time">
+                  <input type="number" name="minute" class="minute" id="minute-end" min="00" max="60" value="00">
+                  <span class="separator">:</span>
+                  <input type="number" name="second" class="second" id="second-end" min="00" max="60" value="00">
+                  <span class="separator">:</span>
+                  <input type="number" name="centiSecond" class="centiSecond" id="centisecond-end" min="00" max="100" value="00">
+                </div>
+              </div>
+            </div>
+            <div class="row-2">
+              <div class = "filters left">
+                <input type="checkbox" name="lowpass" id="lowpass">
+                <label for="lowpass" class="filter">Lowpass</label>
+                <input type="checkbox" name="reverb" id="reverb">
+                <label for="reverb" class="filter">Reverbation</label>
+              </div>
+              <div class="effects left">
+                <input type="checkbox" name="fadeIn" id="fade-in">
+                <label for="fade-in" class="effect">Fade In</label>
+                <input type="checkbox" name="fadeOut" id="fade-out">
+                <label for="fade-out" class="effect">Fade Out</label>
+              </div>
+            </div>
+            <div class="row-3">
+              <div class="download right">
+                <a id="download-mixed"><i class="fas fa-download"></i></a>
+              </div>
+              <div class="save right">
+                <button id="save-mixed"><i class="far fa-save"></i></button>
+              </div>
+              <div class="volume right">
+                <input type="range" min = 0 max="2" value = 1 step = "0.03" id="volume-slider">
+              </div>
+              <audio id="final-audio"></audio>
+            </div>
+            </div>
+          <div class="audioInput">
+            <input type="file" accept="audio/*" id="addMusic">
+            <label for="addMusic" class="inputBtn"><span>sound</span></label>
+          </div>
+          <div class="realtime-wave-container">
+            <canvas id="realtime"></canvas>
+          </div>
+      </div>
+      <div class="mic left">
+        <button title="record" id="mic"><i class="fas fa-microphone"></i></button>
+      </div>
+      <div class="proceed left">
+        <button title="proceed" id="proceed"><i class="fas fa-forward"></i></button>
+      </div>
+      <div class="recording-controls clearfix">
+        <div class="pause left">
+          <a title="pause" id="pause"><i class="fas fa-pause"></i></a>
+        </div>
+        <div class="end left">
+          <a title="end" id="end"><i class="fas fa-stop" ></i></a>
+        </div>
+        <div class="cancel left">
+          <a title="cancel" id="cancel" onclick="window.location.href='./index.html'"><i class="fas fa-times"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="countdown-overlay">
+      <div class="count">
+        <h1 id="count-number">1</h1>
+      </div>
+    </div>
+  </main>
+</div>
+<script src = "js/app.js"></script>
+<script src = "js/recorder.js"></script>
+<script src="js/track.js"></script>
+<script src="js/player.js"></script>
+<script src = "js/mixer.js" ></script>
+<script src="js/karaoke.js"></script>
+<script src="js/constants.js"></script>
+<script src="js/modify.js"></script>
+<script src="js/util.js"></script>
+<script src="js/visualizer.js"></script>
+<script src="js/audioFile.js"></script>
+<script src="js/joiner.js"></script>
+<script src="js/export.js"></script>
+</body>
+</html>
