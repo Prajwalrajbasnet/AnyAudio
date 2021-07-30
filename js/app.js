@@ -1,22 +1,22 @@
-//UI buttons and elements for app state handling
-const appFeatures = document.getElementById('app-features') 
-const recorderDiv = document.querySelector('.recorder');
-const recordBtn = document.getElementById('record');
-const recordingControls = document.querySelector('.recording-controls');
-const audioInput = document.querySelector('.audioInput');
-const addMusic = document.getElementById('addMusic');
 const mic = document.getElementById('mic');
-const karaokeBtn = document.getElementById('karaoke-btn');
-const ringtoneBtn = document.getElementById('ringtone-btn');
-const audioContainer = document.querySelector('.audio-container');
+//UI buttons and elements for app state handling
 const filters = document.querySelector('.filters');
-const playbackControls = document.getElementById('playback-controls');
-const joinMusicBtn = document.getElementById('join-music-btn');
-const singleRecordingBtn = document.getElementById('single-recording');
+const recordBtn = document.getElementById('record');
+const addMusic = document.getElementById('addMusic');
 const proceedBtn = document.getElementById('proceed');
-const previewJoined = document.getElementById('preview-joined');
-const singleRecording = document.getElementById('single-recording');
+const recorderDiv = document.querySelector('.recorder');
+const audioInput = document.querySelector('.audioInput');
+const karaokeBtn = document.getElementById('karaoke-btn');
+const appFeatures = document.getElementById('app-features') 
+const ringtoneBtn = document.getElementById('ringtone-btn');
 const timeCounter = document.querySelector('.time-counter');
+const joinMusicBtn = document.getElementById('join-music-btn');
+const previewJoined = document.getElementById('preview-joined');
+const audioContainer = document.querySelector('.audio-container');
+const singleRecording = document.getElementById('single-recording');
+const playbackControls = document.getElementById('playback-controls');
+const singleRecordingBtn = document.getElementById('single-recording');
+const recordingControls = document.querySelector('.recording-controls');
 
 recordBtn.onclick = () =>{
   appFeatures.style.display = 'none';
@@ -64,8 +64,8 @@ joinMusicBtn.onclick = () => {
   soundTracks = [];
   addMusic.onchange = (ev) => {
     files.push(new AudioFile(AUDIOCTX));
-    const presentfile = files[files.length - 1];
-    presentfile.loadFile(ev);
+    const presentFile = files[files.length - 1];
+    presentFile.loadFile(ev);
     if(files.length >= 2){
       proceedBtn.style.display = 'block';
     }
